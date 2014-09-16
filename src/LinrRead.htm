@@ -1,0 +1,15 @@
+<script type="text/javascript" id="Linr" author="nihaoku.cn">  
+//<![CDATA[
+function readTxt(str){
+	var mm = new ActiveXObject('SAPI.SpVoice');
+		mm.Voice = mm.GetVoices("Name=Microsoft Simplified Chinese")[1];
+		mm.Speak(str);
+}
+function read(){
+	var document = external.menuArguments.document;
+	var txt = (document.selection) ? document.selection.createRange().text : 'ÇëÑ¡ÔñÔÄ¶ÁÄÚÈÝ£¡';
+	readTxt(txt);
+}
+read();
+//]]>
+</script>
