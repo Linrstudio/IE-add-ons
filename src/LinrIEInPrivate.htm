@@ -1,0 +1,37 @@
+<!--
+/**
+ * LinrPrivate 隐私浏览网页
+ * @version: 1.0.0
+ * 
+ * Copyright 2011, Vickey Chen.
+ * Released under the MIT, BSD, and GPL Licenses.
+ * http://www.xiaogezi.cn/
+ * 
+ * Revision: 1
+ *  
+ */
+-->
+<script type="text/javascript" id="Linr" author="nihaoku.cn" charset="gb2312">  
+window.linrPrivate || (function(w){
+	var doc = w.document, ev = w.event, eo = ev ? doc.elementFromPoint(ev.clientX, ev.clientY) : null, uri = doc['URL'] || 'about:blank';
+	if(eo){
+		var tag = eo.tagName.toLowerCase();
+		if(tag == 'a' && eo.href){
+			if(eo.href.indexOf('javascript:') != 0 && eo.getAttribute('href') != '#' && eo.getAttribute('href') != '###'){
+				uri = eo.href;
+			}else{
+				return;
+			}
+		}else if(tag == 'img'){
+			//document.cookie = 'xxx';
+			alert(document.cookie);
+		}
+	}
+	try{
+		var wsh = new ActiveXObject("WScript.Shell");
+			wsh.Run("iexplore.exe " + uri + " -private", 1, false);
+	}catch(e){
+		alert("系统找不到指定的IE启动程序！");
+	}
+})(external.menuArguments);
+</script>
